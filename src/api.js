@@ -26,3 +26,31 @@ export const getMovieBySearchWord = async (query) => {
   });
   return response.data.results;
 };
+
+export const getMovieDetails = async (id) => {
+  const response = await axios.get(`movie/${id}`, {
+    params: {
+      language: "en-US",
+    },
+  });
+  return response.data;
+};
+
+export const getMovieCredits = async (id) => {
+  const response = await axios.get(`movie/${id}/credits`, {
+    params: {
+      language: "en-US",
+    },
+  });
+  return response.data.cast;
+};
+
+export const getMovieReviews = async (id) => {
+  const response = await axios.get(`movie/${id}/reviews`, {
+    params: {
+      language: "en-US",
+      page: "1",
+    },
+  });
+  return response.data.results;
+};
