@@ -14,3 +14,15 @@ export const getTrendingMovies = async () => {
   });
   return response.data.results;
 };
+
+export const getMovieBySearchWord = async (query) => {
+  const response = await axios.get("search/movie", {
+    params: {
+      language: "en-US",
+      include_adult: "false",
+      page: "1",
+      query,
+    },
+  });
+  return response.data.results;
+};
