@@ -37,7 +37,7 @@ const MovieDetailsPage = () => {
   return (
     <div>
       <BackLink to={locationRef.current}></BackLink>
-      <div>
+      <div className={css.wrapper}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           alt="poster of the movie"

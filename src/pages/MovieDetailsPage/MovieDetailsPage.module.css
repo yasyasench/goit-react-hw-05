@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+img {
+    margin-right: 20px;
+}
+
+a {
+    margin-right: 6px;
+}
