@@ -3,11 +3,13 @@ import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import css from "./MovieDetailsPage.module.css";
 import { getMovieDetails } from '../../api';
 import BackLink from "../../components/BackLink/BackLink";
+import Loader from '../../components/Loader/Loader'; 
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); 
   const location = useLocation();
   const locationRef = useRef(location.state?.from ?? "/");
 
@@ -17,6 +19,7 @@ const MovieDetailsPage = () => {
         const movieDetails = await getMovieDetails(movieId);
         setMovie(movieDetails);
       } catch (error) {
+        setError('Failed to fetch movie details. Please try again later.');
         console.log(error);
       } finally {
         setLoading(false);
@@ -27,7 +30,11 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />; 
+  }
+
+  if (error) {
+    return <div>{error}</div>; 
   }
 
   if (!movie) {
@@ -40,7 +47,7 @@ const MovieDetailsPage = () => {
       <div className={css.wrapper}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt="poster of the movie"
+          alt={`Poster of ${movie.title}`}
           width={300}
         />
         <div>
@@ -70,6 +77,6 @@ const MovieDetailsPage = () => {
       <Outlet />
     </div>
   );
-}
+};
 
 export default MovieDetailsPage;

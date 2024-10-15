@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import css from "./HomePage.module.css"
+import React, { useEffect, useState } from 'react';
+import css from "./HomePage.module.css";
 import { getTrendingMovies } from '../../api';
-import MovieList from "../../components/MovieList/MovieList"
-
+import MovieList from "../../components/MovieList/MovieList";
+import Loader from '../../components/Loader/Loader'; 
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -11,8 +11,8 @@ const HomePage = () => {
   useEffect(() => {
     const fetchTrendingMovies = async () => { 
       try {
-        const trendigMovies = await getTrendingMovies();
-        setMovies(trendigMovies);
+        const trendingMovies = await getTrendingMovies();
+        setMovies(trendingMovies);
       } catch (error) {
         console.log(error);
       } finally {
@@ -21,15 +21,18 @@ const HomePage = () => {
     };
 
     fetchTrendingMovies();
-
   }, []);
   
   return (
     <div>
-      <h1 className={css.titel}>Trending today</h1>
-      {movies.length > 0 && <MovieList moviesProp={movies}/>}
+      <h1 className={css.title}>Trending today</h1> 
+      {loading ? (
+        <Loader />  
+      ) : (
+        movies.length > 0 ? <MovieList moviesProp={movies} /> : <div>No trending movies available.</div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
