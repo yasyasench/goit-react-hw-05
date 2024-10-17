@@ -5,8 +5,12 @@
 }
 
 .link {
-    color: black;
     text-decoration: none;
+    color: #aebbc3;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+   
 }
 
 .link:hover {

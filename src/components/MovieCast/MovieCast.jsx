@@ -40,8 +40,8 @@ const MovieCast = () => {
 
     return (
         <div>
-            <h4>Cast</h4>
-            <ul> 
+            <h2>Cast</h2>
+            <ul className={css.castList}> 
                 {cast.map((actor) => (
                     <li key={actor.cast_id}> 
                         <div> 
@@ -52,7 +52,7 @@ const MovieCast = () => {
                                     width={150}
                                 />
                             )}
-                            <p>
+                            <p  className={css.actorName}>
                                 {actor.name} as {actor.character}
                             </p>
                         </div>

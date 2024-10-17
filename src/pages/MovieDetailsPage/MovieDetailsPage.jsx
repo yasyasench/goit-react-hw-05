@@ -42,36 +42,45 @@ const MovieDetailsPage = () => {
   }
 
   return (
-    <div>
+    <div className={css.containerMovieDetails}>
       <BackLink to={locationRef.current}></BackLink>
-      <div className={css.wrapper}>
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt={`Poster of ${movie.title}`}
-          width={300}
-        />
-        <div>
-          <h2>
+
+      <div className={css.movieDetailsItem}>
+        <h2 className={css.headerMovieDetails}>
             {movie.title} ({new Date(movie.release_date).getFullYear()})
-          </h2>
-          <p>User Score: {Math.round(movie.popularity / 10)}%</p>
-          <h3>Overview</h3>
-          <p>{movie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
+        </h2>
+
+        <div className={css.movieDetailsContent}>
+          <div className={css.containerMovieDetailsImg}>
+            <img className={css.movieDetailsImg}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={`Poster of ${movie.title}`}
+              width={300}
+            />
+          </div>
+          <div>
+            <p>User Score: {Math.round(movie.popularity / 10)}%</p>
+            <h3>Overview</h3>
+            <p>{movie.overview}</p>
+            <h3>Genres</h3>
+          </div>
+           <div > 
+          <ul >
             {movie.genres.map((genre) => (
               <li key={genre.id}>
                 <p>{genre.name}</p>
               </li>
             ))}
-          </ul>
+            </ul>
+            </div>
         </div>
+
       </div>
       <hr />
       <div>
         <h4>Additional Information</h4>
-        <Link to={`/movies/${movieId}/cast`}>Cast</Link>
-        <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+        <Link   className={css.nestedRouteLink} to={`/movies/${movieId}/cast`}>Cast</Link>
+        <Link className={css.nestedRouteLink} to={`/movies/${movieId}/reviews`}>Reviews</Link>
       </div>
       <hr />
       <Outlet />

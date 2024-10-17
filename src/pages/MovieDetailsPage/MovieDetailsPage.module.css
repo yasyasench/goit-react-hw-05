@@ -1,12 +1,66 @@
-.wrapper {
+.containerMovieDetails {
+    color: #fff;
+    padding: 40px 40px 0 40px;
+}
+
+.goBackLink {
+    background-color: #6a828d;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.headerMovieDetails {
+    margin-top: 12px;
+}
+
+.movieDetailsItem {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    row-gap: 20px;
 }
 
-img {
-    margin-right: 20px;
+.movieDetailsContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-a {
-    margin-right: 6px;
+.containerMovieDetailsImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.movieDetailsImg {
+    max-width: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 1px 4px 8px rgba(2, 2, 2, 0.18);
+}
+
+.containerMovieDetailsInfo {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: transparent;
+    box-shadow: 1px 4px 8px rgba(2, 2, 2, 0.18);
+    border-radius: 10px;
+}
+
+.nestedRouteList {
+    display: flex;
+    gap: 20px;
+}
+
+.nestedRouteLink {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-right: 8px;
+}
+
